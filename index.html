@@ -180,6 +180,8 @@ console.log(confirmationResult);
 });
 
 }
+
+
 // function myFunction() {
 // window.confirmationResult.confirm(document.getElementById("cd").value)
 // .then(function(result) {
@@ -202,7 +204,7 @@ confirmationResult.confirm(code).then(function (result) {
   console.log("The user is verified");
   var user = result.user;
 
-
+        window.navigate("post_login.html");
   
   // ...
 }).catch(function (error) {
