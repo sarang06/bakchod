@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="utf-8">
+        <title>Firebase Crud Ops</title>
+            <!-- bootstrap 4 files -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+
+    <body style="background-color: black; color: white">
+            <h1 class="text-center">Firebase CRUD</h1>
+             
+           <div class="container text-center">
+                    
+            <div class="card bg-danger text-center" style="width: 18rem">
+                    <h2>Data Center</h2>    
+                <div class="form-group text-center">
+                    <label for="usr">Name:</label>
+                    <input type="text" class="form-control " style="width: 50%;margin-left: 70px" id="usr">
+                  </div>
+                  <div class="form-group text-center">
+                    <label for="pwd">Password:</label>
+                    <div class="text-center"><input type="password" class="form-control  " style="width: 50%; margin-left: 70px" id="pwd"></div>
+                  
+                </div>
+
+                <div >
+                     <button onclick="writedata(); " class="form-group text-center bg-warning "> Save </button>
+                     <button onclick="dikhao();" class="form-group text-center bg-warning "> Update </button>
+                     <button class="form-group text-center bg-warning "> Delete </button>
+                
+                </div>
+               </div>
+           </div>
+        
+           <!-- for displaying the data -->
+
+            <table id="tab" border="1">
+                <tr>
+                    <td>#ID</td>
+                    <td>Name</td>
+                </tr>
+
+            </table>
+
+            
+
+            <form>
+                    <input type="text" id="8" value="enter verification">
+                    <input type="button" value="Submit" onclick="send();">
+
+
+
+                    
+
+
+                  </form>   
+                  <div id="recaptcha-container"></div>
+    <script>
+        
+        function save_data(){
+
+        }
+
+        function update_data(){
+
+        }
+
+        function delete_data(){
+
+        }
+
+        function reload_page(){
+
+        }
+
+  
+
+    </script>
+
+
+            <!-- FIREBASE REQUIRED LINKS START -->
+                 
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#config-web-app -->
+
+
+                <script>
+                        // Your web app's Firebase configuration
+                        var firebaseConfig = {
+                          apiKey: "AIzaSyASZVQndJTvksQoAsZti724cf1fU52ZmtM",
+                          authDomain: "jeevika-2532066.firebaseapp.com",
+                          databaseURL: "https://jeevika-2532066.firebaseio.com",
+                          projectId: "jeevika-2532066",
+                          storageBucket: "",
+                          messagingSenderId: "809962495525",
+                          appId: "1:809962495525:web:16997dbbfd316d3992e9cc"
+                        };
+                        // Initialize Firebase
+                        firebase.initializeApp(firebaseConfig);
+                      
+
+
+                        // function dikhao(){
+                        //     var tav = document.getElementById('tab');
+                        //     var database = firebase.database().ref('data');
+                        //     var rowIndex = 1;
+                            
+                        //     database.once('value', function(snapshot) {
+                        //     snapshot.forEach(function(childSnapshot) {
+                        //     var childKey = childSnapshot.key;
+                        //     var childData = childSnapshot.val();
+
+                        //     console.log(childData);
+                            
+                        //     var row = tav.insertRow(rowIndex);
+                        //     var cellId = row.insertCell(0);
+                        //     var cellName = row.insertCell(1);
+                        //     cellId.appendChild(document.createTextNode(childData));
+                        //     // cellName.appendChild(document.createTextNode(childData));
+                            
+                        //     // rowIndex = rowIndex + 1;
+                        //         });
+                        //     });
+                        // }
+
+
+
+
+                        //   function writedata() {
+                          
+                        //   firebase.database().ref("data").set({
+                      
+                        //     name: document.getElementById("usr").value,
+                        //     password: document.getElementById("pwd").value
+                        //   });
+                      
+                      
+                      
+                        // }
+                      
+
+
+                                
+        // code for phone verificaiton  
+        firebase.auth().languageCode = 'it';
+// To apply the default browser preference instead of explicitly setting it.
+// firebase.auth().useDeviceLanguage();
+
+     
+
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+// console.log(window.recaptchaVerifier);
+
+
+
+
+function send(){
+
+var phoneNumber= document.getElementById('8').value;
+ console.log(phoneNumber);
+
+    firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier) 
+.then(function(confirmationResult) {
+
+confirmationResult.confirm(getElementById('cd'));
+
+window.confirmationResult = confirmationResult;
+console.log(confirmationResult);
+});
+
+}
+function myFunction() {
+window.confirmationResult.confirm(document.getElementById("verificationcode").value)
+.then(function(result) {
+console.log(result);
+}).catch(function(error) {
+console.log(error);
+});
+};
+
+
+
+                            // displaying the feeded data on the screen
+
+                            // var database= firebase.database().ref('data');
+
+                            // var table= document.getElementById('tab');   
+
+                            // database.once('value', function(snapshot) {
+                            // snapshot.forEach(function(childSnapshot) {
+                            //     var childKey = childSnapshot.key;
+                            //     var childData = childSnapshot.val();
+                            //     // ...
+                            // });
+                            // });
+
+
+                                           
+                      
+                      // writedata(happy_sir);
+                      </script>
+                      
+
+            <!-- FIREBASE REQUIRED LINKS ENDS -->
+
+    </body>
+</html>
