@@ -173,7 +173,7 @@ var phoneNumber= document.getElementById('8').value;
     firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier) 
 .then(function(confirmationResult) {
 
-confirmationResult.confirm(getElementById('cd'));
+// confirmationResult.confirm(getElementById('cd'));
 
 window.confirmationResult = confirmationResult;
 console.log(confirmationResult);
