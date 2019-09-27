@@ -55,7 +55,7 @@
 
     
                         <input type="text" id="cd" value="enter code">
-                        <input type="button" value="Submit" onclick="">
+                        <input type="button" value="Submit" onclick="myFunction();">
                        
 
 
@@ -181,7 +181,7 @@ console.log(confirmationResult);
 
 }
 function myFunction() {
-window.confirmationResult.confirm(document.getElementById("verificationcode").value)
+window.confirmationResult.confirm(document.getElementById("cd").value)
 .then(function(result) {
 console.log(result);
 }).catch(function(error) {
