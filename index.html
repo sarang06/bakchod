@@ -39,14 +39,19 @@
         
            <!-- for displaying the data -->
 
-            <table id="tab" border="1">
+            <!-- <table id="tab" border="1">
                 <tr>
                     <td>#ID</td>
                     <td>Name</td>
                 </tr>
 
-            </table>
+            </table> -->
 
+
+                <!-- division for getting the data  -->
+                <div id="tav">
+                     <!-- <script>  var uper_se_aaya_data;   document.write(uper_se_aaya_data);</script> -->
+                </div>
             
 
             <form>
@@ -56,6 +61,9 @@
     
                         <input type="text" id="cd" value="enter code">
                         <input type="button" value="Submit" onclick="myFunction();">
+
+
+                    <input type="button" value="check" onclick="check();">
                        
 
 
@@ -107,52 +115,62 @@
                         };
                         // Initialize Firebase
                         firebase.initializeApp(firebaseConfig);
-                      
+                        
+                        var uper_se_aaya_data;
 
 
-                        // function dikhao(){
-                        //     var tav = document.getElementById('tab');
-                        //     var database = firebase.database().ref('data');
-                        //     var rowIndex = 1;
+                        function dikhao(){
+                            var tav = document.getElementById('tab');
+                            var database = firebase.database().ref('data');
+                            var rowIndex = 1;
                             
-                        //     database.once('value', function(snapshot) {
-                        //     snapshot.forEach(function(childSnapshot) {
-                        //     var childKey = childSnapshot.key;
-                        //     var childData = childSnapshot.val();
+                            database.once('value', function(snapshot) {
+                            snapshot.forEach (function(childSnapshot) {
+                            var childKey = childSnapshot.key;
+                            var childData = childSnapshot.val();
 
-                        //     console.log(childData);
+                            console.log(childData);
                             
-                        //     var row = tav.insertRow(rowIndex);
-                        //     var cellId = row.insertCell(0);
-                        //     var cellName = row.insertCell(1);
-                        //     cellId.appendChild(document.createTextNode(childData));
-                        //     // cellName.appendChild(document.createTextNode(childData));
+                            // var row = tav.insertRow(rowIndex);
+                            // var cellId = row.insertCell(0);
+                            // var cellName = row.insertCell(1);
+                            // cellId.appendChild(document.createTextNode(childData));
+
                             
-                        //     // rowIndex = rowIndex + 1;
-                        //         });
-                        //     });
-                        // }
+
+                            //  uper_se_aaya_data = 4;
+                            //  console.log(uper_se_aaya_data);
+                                    $("#tav").html(childData);
+                                    $("#tav").html(childData);
+
+
+                            // cellName.appendChild(document.createTextNode(childData));
+                            
+                            // rowIndex = rowIndex + 1;
+                                    });
+                            });
+                        }
 
 
 
 
-                        //   function writedata() {
+                          function writedata() {
                           
-                        //   firebase.database().ref("data").set({
+                          firebase.database().ref("data").set({
                       
-                        //     name: document.getElementById("usr").value,
-                        //     password: document.getElementById("pwd").value
-                        //   });
+                            name: document.getElementById("usr").value,
+                            password: document.getElementById("pwd").value
+                          });
                       
                       
                       
-                        // }
+                        }
                       
 
 
                                 
         // code for phone verificaiton  
-        firebase.auth().languageCode = 'hi';
+        firebase.auth().languageCode = 'en';
 // To apply the default browser preference instead of explicitly setting it.
 // firebase.auth().useDeviceLanguage();
 
@@ -204,7 +222,7 @@ confirmationResult.confirm(code).then(function (result) {
   console.log("The user is verified");
   var user = result.user;
 
-        window.navigate("post_login.html");
+        window.location.href="post_login.html";
   
   // ...
 }).catch(function (error) {
@@ -216,7 +234,11 @@ confirmationResult.confirm(code).then(function (result) {
 
 }
 
-
+    function check(){
+                console.log( " me loop ke pehle hu  ");
+                window.location.href="post_login.html";
+                console.log( " me loop ke baad   hu  ");
+    }
 
 
                             // displaying the feeded data on the screen
